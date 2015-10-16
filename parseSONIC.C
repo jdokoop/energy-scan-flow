@@ -54,6 +54,75 @@ TGraphErrors *g_v3_200GeV_pf;
 // Functions
 //-------------------------------
 
+void writeToFile()
+{
+	//Name all of the TGraphs to easily identify them
+	g_v2_7GeV->SetName("gv2_7GeV");
+	g_v2_7GeV_pf->SetName("gv2_7GeV_pf");
+
+	g_v2_20GeV->SetName("gv2_20GeV");
+	g_v2_20GeV_pf->SetName("gv2_20GeV_pf");
+
+	g_v2_39GeV->SetName("gv2_39GeV");
+	g_v2_39GeV_pf->SetName("gv2_39GeV_pf");
+
+	g_v2_62GeV->SetName("gv2_62GeV");
+	g_v2_62GeV_pf->SetName("gv2_62GeV_pf");
+
+	g_v2_200GeV->SetName("gv2_200GeV");
+	g_v2_200GeV_pf->SetName("gv2_200GeV_pf");
+
+	g_v3_7GeV->SetName("gv3_7GeV");
+	g_v3_7GeV_pf->SetName("gv3_7GeV_pf");
+
+	g_v3_20GeV->SetName("gv3_20GeV");
+	g_v3_20GeV_pf->SetName("gv3_20GeV_pf");
+
+	g_v3_39GeV->SetName("gv3_39GeV");
+	g_v3_39GeV_pf->SetName("gv3_39GeV_pf");
+
+	g_v3_62GeV->SetName("gv3_62GeV");
+	g_v3_62GeV_pf->SetName("gv3_62GeV_pf");
+
+	g_v3_200GeV->SetName("gv3_200GeV");
+	g_v3_200GeV_pf->SetName("gv3_200GeV_pf");
+
+	//Write them out to file
+	TFile *fOut = new TFile("sonicPlots.root","RECREATE");
+
+	g_v2_7GeV->Write();
+	g_v2_7GeV_pf->Write();
+
+	g_v2_20GeV->Write();
+	g_v2_20GeV_pf->Write();
+
+	g_v2_39GeV->Write();
+	g_v2_39GeV_pf->Write();
+
+	g_v2_62GeV->Write();
+	g_v2_62GeV_pf->Write();
+
+	g_v2_200GeV->Write();
+	g_v2_200GeV_pf->Write();
+
+	g_v3_7GeV->Write();
+	g_v3_7GeV_pf->Write();
+
+	g_v3_20GeV->Write();
+	g_v3_20GeV_pf->Write();
+
+	g_v3_39GeV->Write();
+	g_v3_39GeV_pf->Write();
+
+	g_v3_62GeV->Write();
+	g_v3_62GeV_pf->Write();
+
+	g_v3_200GeV->Write();
+	g_v3_200GeV_pf->Write();
+
+	fOut->Close();
+}
+
 void processFile(string filename, TGraphErrors *& graph_v2, TGraphErrors *& graph_v3)
 {
 	//Arrays to store v_n values and their uncertainties
@@ -129,4 +198,7 @@ void parseSONIC()
 	processFile("all-dAu/39-preflow/av_unid_vn.dat",g_v2_39GeV_pf,g_v3_39GeV_pf);
 	processFile("all-dAu/62.4-preflow/av_unid_vn.dat",g_v2_62GeV_pf,g_v3_62GeV_pf);
 	processFile("all-dAu/200-preflow/av_unid_vn.dat",g_v2_200GeV_pf,g_v3_200GeV_pf);
+
+	//Write to file
+	writeToFile();
 }
