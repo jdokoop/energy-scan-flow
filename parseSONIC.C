@@ -28,8 +28,8 @@ TGraphErrors *g_v2_20GeV_pf;
 TGraphErrors *g_v2_39GeV;
 TGraphErrors *g_v2_39GeV_pf;
 
-TGraphErrors *g_v2_64GeV;
-TGraphErrors *g_v2_GeV_pf;
+TGraphErrors *g_v2_62GeV;
+TGraphErrors *g_v2_62GeV_pf;
 
 TGraphErrors *g_v2_200GeV;
 TGraphErrors *g_v2_200GeV_pf;
@@ -44,8 +44,8 @@ TGraphErrors *g_v3_20GeV_pf;
 TGraphErrors *g_v3_39GeV;
 TGraphErrors *g_v3_39GeV_pf;
 
-TGraphErrors *g_v3_64GeV;
-TGraphErrors *g_v3_GeV_pf;
+TGraphErrors *g_v3_62GeV;
+TGraphErrors *g_v3_62GeV_pf;
 
 TGraphErrors *g_v3_200GeV;
 TGraphErrors *g_v3_200GeV_pf;
@@ -105,7 +105,6 @@ void processFile(string filename, TGraphErrors *& graph_v2, TGraphErrors *& grap
 		for(int line = 0; line<NPOINT; line++)
 		{
 			myFile >> pT_vals[line] >> v0[line] >> v0_err[line] >> v1[line] >> v1_err[line] >> v2[line] >> v2_err[line] >> v3[line] >> v3_err[line] >> v4[line] >> v4_err[line] >> v5[line] >> v5_err[line];
-			cout << pT_vals[line] << " " << v2[line] << " " << v2_err[line] << endl;
 			x_err[line] = 0;
 		}	
 		break;
@@ -119,4 +118,15 @@ void parseSONIC()
 {
 	//File with points from SONIC
 	processFile("all-dAu/7.7/av_unid_vn.dat",g_v2_7GeV,g_v3_7GeV);
+	processFile("all-dAu/20/av_unid_vn.dat",g_v2_20GeV,g_v3_20GeV);
+	processFile("all-dAu/39/av_unid_vn.dat",g_v2_39GeV,g_v3_39GeV);
+	processFile("all-dAu/62.4/av_unid_vn.dat",g_v2_62GeV,g_v3_62GeV);
+	processFile("all-dAu/200/av_unid_vn.dat",g_v2_200GeV,g_v3_200GeV);
+
+	//File with points from superSONIC
+	processFile("all-dAu/7.7-preflow/av_unid_vn.dat",g_v2_7GeV_pf,g_v3_7GeV_pf);
+	processFile("all-dAu/20-preflow/av_unid_vn.dat",g_v2_20GeV_pf,g_v3_20GeV_pf);
+	processFile("all-dAu/39-preflow/av_unid_vn.dat",g_v2_39GeV_pf,g_v3_39GeV_pf);
+	processFile("all-dAu/62.4-preflow/av_unid_vn.dat",g_v2_62GeV_pf,g_v3_62GeV_pf);
+	processFile("all-dAu/200-preflow/av_unid_vn.dat",g_v2_200GeV_pf,g_v3_200GeV_pf);
 }
