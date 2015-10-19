@@ -73,6 +73,18 @@ TGraphErrors *gv2_39GeV_supersonic;
 TGraphErrors *gv2_20GeV_supersonic;
 TGraphErrors *gv2_7GeV_supersonic;
 
+TGraphErrors *gv3_200GeV_sonic;
+TGraphErrors *gv3_62GeV_sonic;
+TGraphErrors *gv3_39GeV_sonic;
+TGraphErrors *gv3_20GeV_sonic;
+TGraphErrors *gv3_7GeV_sonic;
+
+TGraphErrors *gv3_200GeV_supersonic;
+TGraphErrors *gv3_62GeV_supersonic;
+TGraphErrors *gv3_39GeV_supersonic;
+TGraphErrors *gv3_20GeV_supersonic;
+TGraphErrors *gv3_7GeV_supersonic;
+
 //------------------------------------------
 // Functions
 //------------------------------------------
@@ -113,6 +125,18 @@ void readFile()
 	gv2_62GeV_supersonic = (TGraphErrors*) fSonic->Get("gv2_62GeV_pf");
 	gv2_200GeV_supersonic = (TGraphErrors*) fSonic->Get("gv2_200GeV_pf");
 
+	gv3_7GeV_sonic = (TGraphErrors*) fSonic->Get("gv3_7GeV");
+	gv3_20GeV_sonic = (TGraphErrors*) fSonic->Get("gv3_20GeV");
+	gv3_39GeV_sonic = (TGraphErrors*) fSonic->Get("gv3_39GeV");
+	gv3_62GeV_sonic = (TGraphErrors*) fSonic->Get("gv3_62GeV");
+	gv3_200GeV_sonic = (TGraphErrors*) fSonic->Get("gv3_200GeV");
+
+	gv3_7GeV_supersonic = (TGraphErrors*) fSonic->Get("gv3_7GeV_pf");
+	gv3_20GeV_supersonic = (TGraphErrors*) fSonic->Get("gv3_20GeV_pf");
+	gv3_39GeV_supersonic = (TGraphErrors*) fSonic->Get("gv3_39GeV_pf");
+	gv3_62GeV_supersonic = (TGraphErrors*) fSonic->Get("gv3_62GeV_pf");
+	gv3_200GeV_supersonic = (TGraphErrors*) fSonic->Get("gv3_200GeV_pf");
+
 }
 
 void extractAMPTvn()
@@ -135,18 +159,22 @@ void drawSeparateEnergies()
 	//sqrt{s_{NN} = 7 GeV
 	TCanvas *c1 = new TCanvas("c1","c1",600,600);
 	gv2_7GeV->SetLineColor(kOrange+10);
-	gv3_7GeV->SetLineColor(kAzure);
+	gv3_7GeV->SetLineColor(kAzure+7);
 	gv2_7GeV_supersonic->SetLineColor(kOrange-3);
+	gv3_7GeV_supersonic->SetLineColor(kViolet+9);
 
 	gv2_7GeV->SetFillColorAlpha(kOrange+10,0.5);
-	gv3_7GeV->SetFillColorAlpha(kAzure,0.5);
+	gv3_7GeV->SetFillColorAlpha(kAzure+7,0.5);
 	gv2_7GeV_supersonic->SetFillColorAlpha(kOrange-3,0.5);
+	gv3_7GeV_supersonic->SetFillColorAlpha(kViolet+9,0.5);
 
 	gv2_7GeV->SetLineWidth(3);
 	gv3_7GeV->SetLineWidth(3);
 	gv2_7GeV_supersonic->SetLineWidth(3);
+	gv3_7GeV_supersonic->SetLineWidth(3);
 
 	gv2_7GeV_supersonic->Draw("ALE3");
+	gv3_7GeV_supersonic->Draw("LE3,same");
 	gv2_7GeV->Draw("LE3,same");
 	gv3_7GeV->Draw("LE3,same");
 
@@ -161,14 +189,15 @@ void drawSeparateEnergies()
 	gv2_7GeV_supersonic->GetYaxis()->SetTitleFont(62);
 	gv2_7GeV_supersonic->GetYaxis()->SetLabelFont(62);
 	gv2_7GeV_supersonic->GetYaxis()->SetTitleOffset(1.2);
-	gv2_7GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.169);
+	gv2_7GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.189);
 
 	TLatex *tlt7GeV = new TLatex(0.15,0.8,"d+Au at 7 GeV");
 	tlt7GeV->SetNDC(kTRUE);
 	tlt7GeV->Draw("same");
 
-	TLegend *leg = new TLegend(0.15, 0.6, 0.45, 0.77);
+	TLegend *leg = new TLegend(0.15, 0.6, 0.42, 0.77);
 	leg->AddEntry(gv2_7GeV_supersonic,"superSONIC v_{2}","LF");
+	leg->AddEntry(gv3_7GeV_supersonic,"superSONIC v_{3}","LF");
 	leg->AddEntry(gv2_7GeV,"AMPT v_{2}","LF");
 	leg->AddEntry(gv3_7GeV,"AMPT v_{3}","LF");
 	leg->SetLineColor(kWhite);
@@ -177,18 +206,22 @@ void drawSeparateEnergies()
 	//sqrt{s_{NN} = 20 GeV
 	TCanvas *c2 = new TCanvas("c2","c2",600,600);
 	gv2_20GeV->SetLineColor(kOrange+10);
-	gv3_20GeV->SetLineColor(kAzure);
+	gv3_20GeV->SetLineColor(kAzure+7);
 	gv2_20GeV_supersonic->SetLineColor(kOrange-3);
+	gv3_20GeV_supersonic->SetLineColor(kViolet+9);
 
 	gv2_20GeV->SetFillColorAlpha(kOrange+10,0.5);
-	gv3_20GeV->SetFillColorAlpha(kAzure,0.5);
+	gv3_20GeV->SetFillColorAlpha(kAzure+7,0.5);
 	gv2_20GeV_supersonic->SetFillColorAlpha(kOrange-3,0.5);
+	gv3_20GeV_supersonic->SetFillColorAlpha(kViolet+9,0.5);
 
 	gv2_20GeV->SetLineWidth(3);
 	gv3_20GeV->SetLineWidth(3);
 	gv2_20GeV_supersonic->SetLineWidth(3);
+	gv3_20GeV_supersonic->SetLineWidth(3);
 
 	gv2_20GeV_supersonic->Draw("ALE3");
+	gv3_20GeV_supersonic->Draw("LE3,same");
 	gv2_20GeV->Draw("LE3,same");
 	gv3_20GeV->Draw("LE3,same");
 
@@ -203,14 +236,15 @@ void drawSeparateEnergies()
 	gv2_20GeV_supersonic->GetYaxis()->SetTitleFont(62);
 	gv2_20GeV_supersonic->GetYaxis()->SetLabelFont(62);
 	gv2_20GeV_supersonic->GetYaxis()->SetTitleOffset(1.2);
-	gv2_20GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.169);
+	gv2_20GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.189);
 
 	TLatex *tlt20GeV = new TLatex(0.15,0.8,"d+Au at 20 GeV");
 	tlt20GeV->SetNDC(kTRUE);
 	tlt20GeV->Draw("same");
 
-	TLegend *leg2 = new TLegend(0.15, 0.6, 0.45, 0.77);
+	TLegend *leg2 = new TLegend(0.15, 0.6, 0.42, 0.77);
 	leg2->AddEntry(gv2_20GeV_supersonic,"superSONIC v_{2}","LF");
+	leg2->AddEntry(gv3_20GeV_supersonic,"superSONIC v_{3}","LF");
 	leg2->AddEntry(gv2_20GeV,"AMPT v_{2}","LF");
 	leg2->AddEntry(gv3_20GeV,"AMPT v_{3}","LF");
 	leg2->SetLineColor(kWhite);
@@ -219,18 +253,22 @@ void drawSeparateEnergies()
 	//sqrt{s_{NN} = 39 GeV
 	TCanvas *c3 = new TCanvas("c3","c3",600,600);
 	gv2_39GeV->SetLineColor(kOrange+10);
-	gv3_39GeV->SetLineColor(kAzure);
+	gv3_39GeV->SetLineColor(kAzure+7);
 	gv2_39GeV_supersonic->SetLineColor(kOrange-3);
+	gv3_39GeV_supersonic->SetLineColor(kViolet+9);
 
 	gv2_39GeV->SetFillColorAlpha(kOrange+10,0.5);
-	gv3_39GeV->SetFillColorAlpha(kAzure,0.5);
+	gv3_39GeV->SetFillColorAlpha(kAzure+7,0.5);
 	gv2_39GeV_supersonic->SetFillColorAlpha(kOrange-3,0.5);
+	gv3_39GeV_supersonic->SetFillColorAlpha(kViolet+9,0.5);
 
 	gv2_39GeV->SetLineWidth(3);
 	gv3_39GeV->SetLineWidth(3);
 	gv2_39GeV_supersonic->SetLineWidth(3);
+	gv3_39GeV_supersonic->SetLineWidth(3);
 
 	gv2_39GeV_supersonic->Draw("ALE3");
+	gv3_39GeV_supersonic->Draw("LE3,same");
 	gv2_39GeV->Draw("LE3,same");
 	gv3_39GeV->Draw("LE3,same");
 
@@ -245,14 +283,15 @@ void drawSeparateEnergies()
 	gv2_39GeV_supersonic->GetYaxis()->SetTitleFont(62);
 	gv2_39GeV_supersonic->GetYaxis()->SetLabelFont(62);
 	gv2_39GeV_supersonic->GetYaxis()->SetTitleOffset(1.2);
-	gv2_39GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.169);
+	gv2_39GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.189);
 
 	TLatex *tlt39GeV = new TLatex(0.15,0.8,"d+Au at 39 GeV");
 	tlt39GeV->SetNDC(kTRUE);
 	tlt39GeV->Draw("same");
 
-	TLegend *leg3 = new TLegend(0.15, 0.6, 0.45, 0.77);
+	TLegend *leg3 = new TLegend(0.15, 0.6, 0.42, 0.77);
 	leg3->AddEntry(gv2_39GeV_supersonic,"superSONIC v_{2}","LF");
+	leg3->AddEntry(gv3_39GeV_supersonic,"superSONIC v_{3}","LF");
 	leg3->AddEntry(gv2_39GeV,"AMPT v_{2}","LF");
 	leg3->AddEntry(gv3_39GeV,"AMPT v_{3}","LF");
 	leg3->SetLineColor(kWhite);
@@ -261,18 +300,22 @@ void drawSeparateEnergies()
 	//sqrt{s_{NN} = 62 GeV
 	TCanvas *c4 = new TCanvas("c4","c4",600,600);
 	gv2_62GeV->SetLineColor(kOrange+10);
-	gv3_62GeV->SetLineColor(kAzure);
+	gv3_62GeV->SetLineColor(kAzure+7);
 	gv2_62GeV_supersonic->SetLineColor(kOrange-3);
+	gv3_62GeV_supersonic->SetLineColor(kViolet+9);
 
 	gv2_62GeV->SetFillColorAlpha(kOrange+10,0.5);
-	gv3_62GeV->SetFillColorAlpha(kAzure,0.5);
+	gv3_62GeV->SetFillColorAlpha(kAzure+7,0.5);
 	gv2_62GeV_supersonic->SetFillColorAlpha(kOrange-3,0.5);
+	gv3_62GeV_supersonic->SetFillColorAlpha(kViolet+9,0.5);
 
 	gv2_62GeV->SetLineWidth(3);
 	gv3_62GeV->SetLineWidth(3);
 	gv2_62GeV_supersonic->SetLineWidth(3);
+	gv3_62GeV_supersonic->SetLineWidth(3);
 
 	gv2_62GeV_supersonic->Draw("ALE3");
+	gv3_62GeV_supersonic->Draw("LE3,same");
 	gv2_62GeV->Draw("LE3,same");
 	gv3_62GeV->Draw("LE3,same");
 
@@ -287,14 +330,15 @@ void drawSeparateEnergies()
 	gv2_62GeV_supersonic->GetYaxis()->SetTitleFont(62);
 	gv2_62GeV_supersonic->GetYaxis()->SetLabelFont(62);
 	gv2_62GeV_supersonic->GetYaxis()->SetTitleOffset(1.2);
-	gv2_62GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.169);
+	gv2_62GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.189);
 
 	TLatex *tlt62GeV = new TLatex(0.15,0.8,"d+Au at 62 GeV");
 	tlt62GeV->SetNDC(kTRUE);
 	tlt62GeV->Draw("same");
 
-	TLegend *leg4 = new TLegend(0.15, 0.6, 0.45, 0.77);
+	TLegend *leg4 = new TLegend(0.15, 0.6, 0.42, 0.77);
 	leg4->AddEntry(gv2_62GeV_supersonic,"superSONIC v_{2}","LF");
+	leg4->AddEntry(gv3_62GeV_supersonic,"superSONIC v_{3}","LF");
 	leg4->AddEntry(gv2_62GeV,"AMPT v_{2}","LF");
 	leg4->AddEntry(gv3_62GeV,"AMPT v_{3}","LF");
 	leg4->SetLineColor(kWhite);
@@ -303,18 +347,21 @@ void drawSeparateEnergies()
 	//sqrt{s_{NN} = 200 GeV
 	TCanvas *c5 = new TCanvas("c5","c5",600,600);
 	gv2_200GeV->SetLineColor(kOrange+10);
-	gv3_200GeV->SetLineColor(kAzure);
+	gv3_200GeV->SetLineColor(kAzure+7);
 	gv2_200GeV_supersonic->SetLineColor(kOrange-3);
+	gv3_200GeV_supersonic->SetLineColor(kViolet+9);
 
 	gv2_200GeV->SetFillColorAlpha(kOrange+10,0.5);
-	gv3_200GeV->SetFillColorAlpha(kAzure,0.5);
+	gv3_200GeV->SetFillColorAlpha(kAzure+7,0.5);
 	gv2_200GeV_supersonic->SetFillColorAlpha(kOrange-3,0.5);
+	gv3_200GeV_supersonic->SetFillColorAlpha(kViolet+9,0.5);
 
 	gv2_200GeV->SetLineWidth(3);
 	gv3_200GeV->SetLineWidth(3);
 	gv2_200GeV_supersonic->SetLineWidth(3);
 
 	gv2_200GeV_supersonic->Draw("ALE3");
+	gv3_200GeV_supersonic->Draw("LE3,same");
 	gv2_200GeV->Draw("LE3,same");
 	gv3_200GeV->Draw("LE3,same");
 
@@ -329,14 +376,15 @@ void drawSeparateEnergies()
 	gv2_200GeV_supersonic->GetYaxis()->SetTitleFont(62);
 	gv2_200GeV_supersonic->GetYaxis()->SetLabelFont(62);
 	gv2_200GeV_supersonic->GetYaxis()->SetTitleOffset(1.2);
-	gv2_200GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.169);
+	gv2_200GeV_supersonic->GetYaxis()->SetRangeUser(0.0, 0.189);
 
 	TLatex *tlt200GeV = new TLatex(0.15,0.8,"d+Au at 200 GeV");
 	tlt200GeV->SetNDC(kTRUE);
 	tlt200GeV->Draw("same");
 
-	TLegend *leg5 = new TLegend(0.15, 0.6, 0.45, 0.77);
+	TLegend *leg5 = new TLegend(0.15, 0.6, 0.42, 0.77);
 	leg5->AddEntry(gv2_200GeV_supersonic,"superSONIC v_{2}","LF");
+	leg5->AddEntry(gv3_200GeV_supersonic,"superSONIC v_{3}","LF");
 	leg5->AddEntry(gv2_200GeV,"AMPT v_{2}","LF");
 	leg5->AddEntry(gv3_200GeV,"AMPT v_{3}","LF");
 	leg5->SetLineColor(kWhite);
@@ -352,19 +400,19 @@ void draw_v2()
 	gv2_200GeV->SetLineColor(kRed+1);
 	gv2_62GeV->SetLineColor(kOrange+7);
 	gv2_39GeV->SetLineColor(kSpring-1);
-	gv2_20GeV->SetLineColor(kAzure-3);
+	gv2_20GeV->SetLineColor(kAzure+7-3);
 	gv2_7GeV->SetLineColor(kViolet+1);
 
 	gv2_200GeV_sonic->SetLineColor(kRed);
 	gv2_62GeV_sonic->SetLineColor(kOrange);
 	gv2_39GeV_sonic->SetLineColor(kSpring-9);
-	gv2_20GeV_sonic->SetLineColor(kAzure+8);
+	gv2_20GeV_sonic->SetLineColor(kAzure+7+8);
 	gv2_7GeV_sonic->SetLineColor(kViolet-2);
 
 	gv2_200GeV_supersonic->SetLineColor(kRed);
 	gv2_62GeV_supersonic->SetLineColor(kOrange);
 	gv2_39GeV_supersonic->SetLineColor(kSpring-9);
-	gv2_20GeV_supersonic->SetLineColor(kAzure+8);
+	gv2_20GeV_supersonic->SetLineColor(kAzure+7+8);
 	gv2_7GeV_supersonic->SetLineColor(kViolet-2);
 
 	gv2_200GeV->SetLineWidth(2);
@@ -376,19 +424,19 @@ void draw_v2()
 	gv2_200GeV->SetFillColorAlpha(kRed+1,0.5);
 	gv2_62GeV->SetFillColorAlpha(kOrange+7,0.5);
 	gv2_39GeV->SetFillColorAlpha(kSpring-1,0.5);
-	gv2_20GeV->SetFillColorAlpha(kAzure-3,0.5);
+	gv2_20GeV->SetFillColorAlpha(kAzure+7-3,0.5);
 	gv2_7GeV->SetFillColorAlpha(kViolet+1,0.5);
 
 	gv2_200GeV_sonic->SetFillColorAlpha(kRed,0.5);
 	gv2_62GeV_sonic->SetFillColorAlpha(kOrange,0.5);
 	gv2_39GeV_sonic->SetFillColorAlpha(kSpring-9,0.5);
-	gv2_20GeV_sonic->SetFillColorAlpha(kAzure+8,0.5);
+	gv2_20GeV_sonic->SetFillColorAlpha(kAzure+7+8,0.5);
 	gv2_7GeV_sonic->SetFillColorAlpha(kViolet-2,0.5);
 
 	gv2_200GeV_supersonic->SetFillColorAlpha(kRed,0.5);
 	gv2_62GeV_supersonic->SetFillColorAlpha(kOrange,0.5);
 	gv2_39GeV_supersonic->SetFillColorAlpha(kSpring-9,0.5);
-	gv2_20GeV_supersonic->SetFillColorAlpha(kAzure+8,0.5);
+	gv2_20GeV_supersonic->SetFillColorAlpha(kAzure+7+8,0.5);
 	gv2_7GeV_supersonic->SetFillColorAlpha(kViolet-2,0.5);
 
     gv2_200GeV->SetTitle("");
